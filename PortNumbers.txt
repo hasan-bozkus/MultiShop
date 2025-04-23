@@ -1,0 +1,4 @@
+-- IdentityServer --> iss - https - 44312
+-- Catalog --> iss - https - 44320
+-- Discount --> iss - https - 44360
+-- Order --> iss - https - 44343
