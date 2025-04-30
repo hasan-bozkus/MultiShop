@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [AllowAnonymous]
-    [Area("Admin")]
-    [Route("[area]/[controller]/[action]/{id?}")]
+    [Area("Admin")]    
     public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -56,7 +55,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PostAsync("https://localhost:44320/api/Categories", stringContent);
             if(responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Category", new { area = "Admin" });
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -67,9 +66,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.DeleteAsync($"https://localhost:44320/api/Categories/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Category", new { area = "Admin" });
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index", "Category", new { area = "Admin" });
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -101,7 +100,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("https://localhost:44320/api/Categories", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Category", new { area = "Admin" });
+                return RedirectToAction("Index");
             }
             return View();
         }

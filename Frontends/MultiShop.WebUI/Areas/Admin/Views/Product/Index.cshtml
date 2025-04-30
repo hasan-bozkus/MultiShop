@@ -1,9 +1,10 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultProductDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
     int count = 0;
 }
+
 
 <section class="content container-fluid">
     <div class="row">
@@ -15,7 +16,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori Adı</th>
+                                <th>Ürün Adı</th>
+                                <th>Ürün Fiyatı</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -27,17 +29,19 @@
 
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.CategoryName</td>
-                                    <td><a href="/Admin/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Admin/Category/UpdateCategory/@item.CategoryID" class="btn btn-success">Güncelle</a></td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductID" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/Category/CreateCategory" class="btn btn-primary">Yeni Kategori Girişi</a>
+                    <a href="/Admin/Product/CreateProduct" class="btn btn-primary">Yeni Ürün Girişi</a>
                 </div>
             </div>
         </div>
 
     </div>
 </section>
+
