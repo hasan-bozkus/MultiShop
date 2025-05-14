@@ -1,0 +1,29 @@
+﻿@model List<GetByIDProductImageDto>
+
+@{
+    ViewData["Title"] = "ProductImageListDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Example Left Image</h4>
+                @foreach (var item in Model)
+                {
+                    <div class="media">
+                        <div class="media-left"> <a href="/Admin/ProductImage/ProductImageDetail/@item.ProductImageID"> <img style="height:100px; width:100px; border-radius:40px 40px" src="@item.ImageUrl" alt="User Image"> </a> </div>
+                        <div class="media-body">
+                            <a href="/Admin/ProductImage/ProductImageDetail/@item.ProductImageID" class="btn btn-success">
+                                <h4 class="media-heading">Görseli Değiştir</h4></a>
+                                <br />
+                                <a href="/Admin/ProductImage/ProductImageDelete/@item.ProductImageID" class="btn btn-danger">
+                                <h4 class="media-heading">Görseli Sil</h4></a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

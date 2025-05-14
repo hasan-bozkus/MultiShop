@@ -6,14 +6,14 @@ using MultiShop.Catalog.Services.ProductImageServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductImageImagesController : ControllerBase
+    public class ProductImagesController : ControllerBase
     {
         private readonly IProductImageService _productImageService;
 
-        public ProductImageImagesController(IProductImageService ProductImageService)
+        public ProductImagesController(IProductImageService ProductImageService)
         {
             _productImageService = ProductImageService;
         }
@@ -51,6 +51,13 @@ namespace MultiShop.Catalog.Controllers
         {
             await _productImageService.UpdateProductImagesAsync(updateProductImageDto);
             return Ok("Güncelleme işlemi başarılı");
+        }
+
+        [HttpGet("ProdctImageListByProductID/{id}")]
+        public async Task<IActionResult> ProdctImageListByProductID(string id)
+        {
+            var values = await _productImageService.GetByProductIDProdutsImageListAsync(id);
+            return Ok(values);
         }
     }
 }
