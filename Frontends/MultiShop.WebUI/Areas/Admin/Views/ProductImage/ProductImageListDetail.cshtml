@@ -3,27 +3,37 @@
 @{
     ViewData["Title"] = "ProductImageListDetail";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
+    var productId = Model.Select(x => x.ProductID).FirstOrDefault();
 }
 
 <section class="content container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="row-md-12">
             <div class="chart-box">
-                <h4>Example Left Image</h4>
+                <h4>Ürüne Ait Görseller</h4>
                 @foreach (var item in Model)
                 {
                     <div class="media">
-                        <div class="media-left"> <a href="/Admin/ProductImage/ProductImageDetail/@item.ProductImageID"> <img style="height:100px; width:100px; border-radius:40px 40px" src="@item.ImageUrl" alt="User Image"> </a> </div>
+                        <div class="media-left">
+                            <a href="/Admin/ProductImage/ProductImageDetail/@item.ProductImageID">
+                                <img style="height:100px; width:100px; border-radius:40px 40px" src="@item.ImageUrl" alt="User Image">
+                            </a>
+                        </div>
                         <div class="media-body">
                             <a href="/Admin/ProductImage/ProductImageDetail/@item.ProductImageID" class="btn btn-success">
-                                <h4 class="media-heading">Görseli Değiştir</h4></a>
-                                <br />
-                                <a href="/Admin/ProductImage/ProductImageDelete/@item.ProductImageID" class="btn btn-danger">
-                                <h4 class="media-heading">Görseli Sil</h4></a>
+                                <h4 class="media-heading">Görseli Değiştir</h4>
+                            </a>
+                            <a href="/Admin/ProductImage/ProductImageDeatilDelete/@item.ProductImageID" class="btn btn-danger">
+                                <h4 class="media-heading">Görseli Sil</h4>
+                            </a>
                         </div>
                     </div>
                 }
             </div>
+
+            <br />
+
+            <a href="/Admin/ProductImage/CreateProductImageDetail/@productId" class="btn btn-primary"> Yeni Görsel Ekle </a>
         </div>
     </div>
 </section>

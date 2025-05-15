@@ -9,11 +9,11 @@ namespace MultiShop.Catalog.Controllers
     [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductDeatilDeatilsController : ControllerBase
+    public class ProductDetailsController : ControllerBase
     {
         private readonly IProductDetailService _productDeatilService;
 
-        public ProductDeatilDeatilsController(IProductDetailService productDeatilService)
+        public ProductDetailsController(IProductDetailService productDeatilService)
         {
             _productDeatilService = productDeatilService;
         }
@@ -51,6 +51,13 @@ namespace MultiShop.Catalog.Controllers
         {
             await _productDeatilService.UpdateProductDetailAsync(updateProductDeatilDto);
             return Ok("Güncelleme işlemi başarılı");
+        }
+
+        [HttpGet("GetProductDetailByProductId/{id}")]
+        public async Task<IActionResult> GetProductDetailByProductId(string id)
+        {
+            var values = await _productDeatilService.GetByProductIDProductDetailAsync(id);
+            return Ok(values);
         }
     }
 }

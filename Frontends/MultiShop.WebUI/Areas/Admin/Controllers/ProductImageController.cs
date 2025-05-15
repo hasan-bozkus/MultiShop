@@ -25,6 +25,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             {
                 var jsonData = await responseCategoryMesasge.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<GetByIDProductImageDto>>(jsonData);
+                ViewBag.productId = values.Select(x => x.ProductID).FirstOrDefault();
+
                 return View(values);
             }
             return View();
@@ -74,9 +76,46 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("https://localhost:44320/api/ProductImages", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("ProductImageListDetail", "ProductImage", new {id = updateProductImageDto.ProductID, area = "Admin" });
+                return RedirectToAction("ProductImageListDetail", "ProductImage", new { id = updateProductImageDto.ProductID, area = "Admin" });
             }
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateProductImageDetail(string id)
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Ürünler";
+            ViewBag.v3 = "Ürün Görsel Ekleme Sayfası";
+            ViewBag.v0 = "Ürün Görsel İşlemleri";
+            ViewBag.productId = id;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProductImageDetail(CreateProductImageDto createProductImageDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createProductImageDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:44320/api/ProductImages", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ProductImageListDetail", "ProductImage", new { id = createProductImageDto.ProductID, area = "Admin" });
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> ProductImageDeatilDelete(string id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:44320/api/ProductImages/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ProductListWithCategory", "Product", new {area = "Admin" });
+            }
+            return RedirectToAction();
         }
     }
 }
