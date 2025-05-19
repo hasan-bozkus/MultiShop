@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CreateContactDto
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
 }
@@ -23,32 +25,31 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form bg-light p-30">
                 <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                <form method="post" action="/Contact/CreateContact">
                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="Your Name"
-                               required="required" data-validation-required-message="Please enter your name" />
+                        <input type="text" class="form-control" id="name" asp-for="NameSurname" placeholder="Adınız Soyadınız"
+                               required="required" data-validation-required-message="İsim Alanı Boş Geçilemez." />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="Your Email"
-                               required="required" data-validation-required-message="Please enter your email" />
+                        <input type="email" class="form-control" id="email" asp-for="Email" placeholder="E-Posta Adresiniz"
+                               required="required" data-validation-required-message="E-Posta Alanı Boş Geçilemez." />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Subject"
-                               required="required" data-validation-required-message="Please enter a subject" />
+                        <input type="text" class="form-control" id="subject" asp-for="Subject" placeholder="Subject"
+                               required="required" data-validation-required-message="Konu Alanı Boş Geçilemez." />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <textarea class="form-control" rows="8" id="message" placeholder="Message"
+                        <textarea class="form-control" rows="8" id="message" asp-for="Message" placeholder="Mesajınız"
                                   required="required"
-                                  data-validation-required-message="Please enter your message"></textarea>
+                                  data-validation-required-message="Mesaj Alanı Boş Geçilemez."></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                     <div>
                         <button class="btn btn-primary py-2 px-4" type="submit" id="sendMessageButton">
-                            Send
-                            Message
+                            Mesajı Gönder
                         </button>
                     </div>
                 </form>
