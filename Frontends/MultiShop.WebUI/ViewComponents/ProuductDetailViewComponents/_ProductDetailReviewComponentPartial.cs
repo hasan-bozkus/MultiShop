@@ -23,6 +23,7 @@ namespace MultiShop.WebUI.ViewComponents.ProuductDetailViewComponents
             {
                 var jsonData = await responseMesasge.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
+                ViewBag.productId = id;
                 return View(values);
             }
             return View();
