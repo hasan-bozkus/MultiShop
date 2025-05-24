@@ -1,3 +1,4 @@
+-- OcelotGateway --> iss - http - 14237
 -- IdentityServer --> iss - https - 44312
 -- Catalog --> iss - https - 44320
 -- Discount --> iss - https - 44360
@@ -5,3 +6,5 @@
 -- Cargo --> iss - https - 44349
 -- Basket --> iss - https - 44344
 -- Comment --> iss - https - 44351
+-- Payment --> iss - https - 44382
+-- Images --> iss - https - 44300

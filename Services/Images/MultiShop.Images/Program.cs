@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using MultiShop.Comment.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.Authority = builder.Configuration["IdentityServerURL"];
-    opt.Audience = "ResourceComment";
+    opt.Audience = "ResourceImages";
     opt.RequireHttpsMetadata = false;
 });
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<CommentContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
