@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
 using MultiShop.WebUI.Models;
-using MultiShop.WebUI.Services;
 using MultiShop.WebUI.Services.Interfaces;
 using NuGet.Protocol;
 using System.IdentityModel.Tokens.Jwt;
@@ -47,7 +46,7 @@ namespace MultiShop.WebUI.Controllers
             signInDto.Username = "ali01";
             signInDto.Password = "123456aA*";
             await _identityService.SignIn(signInDto);
-            return RedirectToAction("Index", "Test");
+            return RedirectToAction("Index", "User");
         }
     }
 }
