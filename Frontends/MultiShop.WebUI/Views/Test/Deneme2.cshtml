@@ -1,0 +1,13 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="margin-left:100px;">
+    @foreach (var item in Model)
+    {
+        <p>@item.CategoryName</p>
+    }
+</div>
