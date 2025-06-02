@@ -9,7 +9,6 @@ using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
     [Area("Admin")]
     public class CommentController : Controller
     {

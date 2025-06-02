@@ -8,6 +8,6 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategoryServices
         Task CreateCategoryAsync(CreateCategoryDto createCategoryDto);
         Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto);
         Task DeleteCategoryAsync(string id);
-        Task<GetByIDCategoryDto> GetByIDCategoryAsync(string id);
+        Task<UpdateCategoryDto> GetByIDCategoryAsync(string id);
     }
 }
