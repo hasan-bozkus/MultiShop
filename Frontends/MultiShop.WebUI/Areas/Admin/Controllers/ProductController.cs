@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+        public async Task<IActionResult> UpdateProduct(ResultProductDto updateProductDto)
         {
             await _productService.UpdateProductAsync(updateProductDto);
             return View();
