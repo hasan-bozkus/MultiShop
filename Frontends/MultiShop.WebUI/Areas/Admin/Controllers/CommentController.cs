@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.ProductDto;
 using MultiShop.DtoLayer.CommentDtos;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using MultiShop.WebUI.Services.CommentServices;
 using Newtonsoft.Json;
 using System.Text;
 using System.Xml.Linq;
@@ -12,84 +14,52 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class CommentController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ICommentService _commentService;
+        private readonly IProductService _productService;
 
-        public CommentController(IHttpClientFactory httpClientFactory)
+        public CommentController(ICommentService commentService, IProductService productService)
         {
-            _httpClientFactory = httpClientFactory;
+            _commentService = commentService;
+            _productService = productService;
         }
 
-        public async Task<IActionResult> Index()
+        void CommentViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Yorumlar";
             ViewBag.v3 = "Yorum Listesi";
             ViewBag.v0 = "Yorum İşlemleri";
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMesasge = await client.GetAsync("https://localhost:44351/api/Comments");
-            if (responseMesasge.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMesasge.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultCommentDto>>(jsonData);
-                return View(values);
-            }
-                return View();
         }
 
-        public async Task<IActionResult> DeleteComment(int id)
+        public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:44351/api/Comments/{id}");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
+            CommentViewBagList();
+            var values = await _commentService.GetAllCommentAsync();
+            return View(values);
+        }
+
+        public async Task<IActionResult> DeleteComment(string id)
+        {
+            await _commentService.DeleteCommentAsync(id);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateComment(int id)
         {
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Yorumlar";
-            ViewBag.v3 = "Yorum Listesi";
-            ViewBag.v0 = "Yorum İşlemleri";
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMesasge = await client.GetAsync($"https://localhost:44351/api/Comments/{id}");
-            if (responseMesasge.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMesasge.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateCommentDto>(jsonData);
-
-                var productResponse = await client.GetAsync($"https://localhost:44320/api/Products/{values.ProductID}");
-                if (productResponse.IsSuccessStatusCode)
-                {
-                    var productData = await productResponse.Content.ReadAsStringAsync();
-                    var products = JsonConvert.DeserializeObject<ResultProductDto>(productData);
-                    ViewBag.productNames = products.ProductName;
-                }
-
-                return View(values);
-            }
-
-            return View();
+            CommentViewBagList();
+            var values = await _commentService.GetByIDCommentAsync(id.ToString());
+            var productResult = await _productService.GetByIDProductAsync(values.ProductID);
+            ViewBag.productNames = productResult.ProductName;
+            return View(values);
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)
         {
             updateCommentDto.Status = true;
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateCommentDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:44351/api/Comments", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            await _commentService.UpdateCommentAsync(updateCommentDto);
+            return RedirectToAction("Index");
         }
     }
 }

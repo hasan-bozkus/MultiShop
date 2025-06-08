@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos;
+using MultiShop.WebUI.Services.CommentServices;
 using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,11 @@ namespace MultiShop.WebUI.Controllers
     public class ProductListController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ICommentService _commentService;
 
-        public ProductListController(IHttpClientFactory httpClientFactory)
+        public ProductListController(ICommentService commentService)
         {
-            _httpClientFactory = httpClientFactory;
+            _commentService = commentService;
         }
 
         public IActionResult Index(string id)
@@ -41,16 +43,8 @@ namespace MultiShop.WebUI.Controllers
             createCommentDto.CreatedDate = DateTime.Parse(DateTime.UtcNow.ToString());
             createCommentDto.Status = false;
             createCommentDto.Rating = 1;
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createCommentDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:44351/api/Comments", stringContent);
-            if(responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductID });
-
-            }
-            return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductID } );
+            await _commentService.CreateCommentAsync(createCommentDto);
+            return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductID });
         }
     }
 }
