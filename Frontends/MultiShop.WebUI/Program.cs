@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.WebUI.Handlers;
+using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -123,6 +124,11 @@ builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
+{ 
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}/");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
@@ -146,21 +152,12 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
   name: "areas",
-  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-);
+  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}");
 
-
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllerRoute(
-//      name: "areas",
-//      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-//    );
-//});
 
 
 app.Run();
