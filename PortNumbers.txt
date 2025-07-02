@@ -8,3 +8,4 @@
 -- Comment --> iss - https - 44351
 -- Payment --> iss - https - 44382
 -- Images --> iss - https - 44300
+-- Messages --> iss - https - 44339

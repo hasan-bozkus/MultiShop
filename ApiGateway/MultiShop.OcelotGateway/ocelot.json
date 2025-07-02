@@ -90,6 +90,24 @@
         "AllowedScopes": [ "BasketFullPermission" ]
       }
     },
+    // Message Mikroservisi
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44339
+        }
+      ],
+      "UpstreamPathTemplate": "/services/message/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "https",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+        "AllowedScopes": [ "MessageFullPermission" ]
+      }
+    },
     // Comment Mikroservisi
     {
       "DownstreamPathTemplate": "/api/{everything}",
