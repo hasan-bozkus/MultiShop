@@ -1,6 +1,6 @@
-﻿@model List<ResultAboutDto>
+﻿@model List<ResultCargoCompanyDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "CargoCompanyList";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
     int count = 0;
 }
@@ -15,9 +15,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Adres</th>
-                                <th>Email</th>
-                                <th>Telefon</th>
+                                <th>Kargo Adı</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -26,22 +24,22 @@
                             @foreach (var item in Model)
                             {
                                 count++;
+
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.Address</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.Phone</td>
-                                    <td><a href="/Admin/About/DeleteAbout/@item.AboutID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Admin/About/UpdateAbout/@item.AboutID" class="btn btn-success">Güncelle</a></td>
+                                    <td>@item.CargoCompanyName</td>
+                                    <td><a href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/About/CreateAbout" class="btn btn-primary">Yeni Hakkımda Girişi</a>
+                    <a href="/Admin/Cargo/CreateCargoCompany" class="btn btn-primary">Yeni Kargo Fİrma Girişi</a>
                 </div>
             </div>
         </div>
 
     </div>
 </section>
+
 

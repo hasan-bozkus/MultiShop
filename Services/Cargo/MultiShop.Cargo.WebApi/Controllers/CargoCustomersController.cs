@@ -44,7 +44,8 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Phone = createCargoCustomerDto.Phone,
                 City = createCargoCustomerDto.City,
                 Disctrict = createCargoCustomerDto.Disctrict,
-                Address = createCargoCustomerDto.Address
+                Address = createCargoCustomerDto.Address,
+                UserCustomerId = createCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TInsert(cargoCustomer);
             return Ok("Ekleme işlemi başarılı");
@@ -69,10 +70,18 @@ namespace MultiShop.Cargo.WebApi.Controllers
                 Phone = updateCargoCustomerDto.Phone,
                 City = updateCargoCustomerDto.City,
                 Disctrict = updateCargoCustomerDto.Disctrict,
-                Address = updateCargoCustomerDto.Address
+                Address = updateCargoCustomerDto.Address,
+                UserCustomerId = updateCargoCustomerDto.UserCustomerId
             };
             _cargoCustomerService.TUpdate(cargoCustomer);
             return Ok("Güncelleme işlemi başarılı");
+        }
+
+        [HttpGet("GetCargoCustomerById/{id}")]
+        public async Task<IActionResult> GetCargoCustomerById(string id)
+        {
+            var values = await _cargoCustomerService.TGetCargoCustomerById(id);
+            return Ok(values);
         }
     }
 }

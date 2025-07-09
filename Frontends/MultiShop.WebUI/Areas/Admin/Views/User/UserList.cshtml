@@ -1,8 +1,8 @@
-﻿@model List<ResultAboutDto>
+﻿@model List<ResultUserDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "UserList";
     Layout = "~/Areas/Admin/Views/AdminLayout/_AdminLayout.cshtml";
-    int count = 0;
+    int count =0;
 }
 
 <section class="content container-fluid">
@@ -15,11 +15,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Adres</th>
+                                <th>Ad Soyad</th>
+                                <th>Kullanıcı Adı</th>
                                 <th>Email</th>
-                                <th>Telefon</th>
-                                <th>Sil</th>
-                                <th>Güncelle</th>
+                                <th>Adres Detayı</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,16 +27,14 @@
                                 count++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.Address</td>
-                                    <td>@item.Email</td>
-                                    <td>@item.Phone</td>
-                                    <td><a href="/Admin/About/DeleteAbout/@item.AboutID" class="btn btn-danger">Sil</a></td>
-                                    <td><a href="/Admin/About/UpdateAbout/@item.AboutID" class="btn btn-success">Güncelle</a></td>
+                                    <td>@item.name</td>
+                                    <td>@item.userName</td>
+                                    <td>@item.email</td>
+                                    <td><a href="/Admin/User/UserAddressInfo/@item.id" class="btn btn-warning">Adres Detayı</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/About/CreateAbout" class="btn btn-primary">Yeni Hakkımda Girişi</a>
                 </div>
             </div>
         </div>

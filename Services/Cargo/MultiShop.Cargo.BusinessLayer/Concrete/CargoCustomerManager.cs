@@ -28,6 +28,11 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
             return _cargoCustomerDal.GetById(id);
         }
 
+        public async Task<CargoCustomer> TGetCargoCustomerById(string id)
+        {
+            return await _cargoCustomerDal.GetCargoCustomerById(id);
+        }
+
         public List<CargoCustomer> TGetList()
         {
             return _cargoCustomerDal.GetAll();
