@@ -64,5 +64,26 @@ namespace MultiShop.Comment.Controllers
             var values = await _context.UserComments.Where(x => x.ProductID == id).ToListAsync();
             return Ok(values);
         }
+
+        [HttpGet("GetActiveCommentCount")]
+        public async Task<IActionResult> GetActiveCommentCount()
+        {
+            var count = await _context.UserComments.CountAsync(x => x.Status == true);
+            return Ok(count);
+        }
+
+        [HttpGet("GetPassiveCommentCount")]
+        public async Task<IActionResult> GetPassiveCommentCount()
+        {
+            var count = await _context.UserComments.CountAsync(x => x.Status == false);
+            return Ok(count);
+        }
+
+        [HttpGet("GetTotalCommentCount")]
+        public async Task<IActionResult> GetTotalCommentCount()
+        {
+            var count = await _context.UserComments.CountAsync();
+            return Ok(count);
+        }
     }
 }

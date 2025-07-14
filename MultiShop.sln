@@ -37,6 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.IdentityServer", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{48A4EC31-B331-4B84-90E0-5331958A8054}"
 	ProjectSection(SolutionItems) = preProject
+		AdminStatisticApiForUI.txt = AdminStatisticApiForUI.txt
 		CreditCard.txt = CreditCard.txt
 		FontAwesomeLink.txt = FontAwesomeLink.txt
 		IdentityServerVersionErrorSolition.txt = IdentityServerVersionErrorSolition.txt

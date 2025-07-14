@@ -46,6 +46,13 @@ namespace MultiShop.Discount.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetDiscountCouponCountAsync")]
+        public async Task<IActionResult> GetDiscountCouponCountAsync()
+        {
+            var values = await _discountService.GetDiscountCouponCountAsync();
+            return Ok(values);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateDiscountCoupon(CreateDiscountCouponDto createCouponDto)
         {

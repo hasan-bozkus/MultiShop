@@ -1,0 +1,7 @@
+User --> 1
+Catalog --> 6
+Comment --> 3
+Discount --> 1
+
+//yapýlacak
+Message --> 1
