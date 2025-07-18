@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-envelope"></i>
+                        <i class="icon-envelope">  <span class="heartbit" style="position:relative;top:-10px;z-index:10"><strong>@ViewBag.TotalMessageCount</strong> </span> </i>
                         <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
@@ -77,11 +77,11 @@
                 <!-- Notifications Menu -->
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-megaphone"></i>
-                        <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                        <i class="icon-megaphone"><span class="heartbit" style="position:relative;top:-10px;z-index:10"><strong>  @ViewBag.TotalCommentCount</strong></span> </i>
+                        <div class="notify"> <span class="heartbit" style=""></span> <span class="point"></span> </div>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">Notifications</li>
+                        <li class="header">Son Yorumlar</li>
                         <li>
                             <ul class="menu">
                                 <li><a href="#"><i class="icon-lightbulb"></i> Lorem ipsum dolor sit amet </a> </li>
