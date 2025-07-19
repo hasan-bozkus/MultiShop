@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "proje-kurs",
+  "private_key_id": "a342d3773c36c499a4f95137f124cbe8538b5e5b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLV4WZJul2e2Iw\nqo5UzpHrHs4oRg3yimnc32jjV7lZjQEhnQislujSjRnotIKGxk7bJvFWuXXm2Sdr\nfamdMh2h66O764+Q6R4TeGIHLEY98qQLnbISnmeoczDiZGXns14bP2om4Aqv4pTa\nv9hgZh0l2BTG09zV6RrNH+yePbb5vSEeO+LKlVlbthULligUFAQnBgl6L8xuy8JS\nyo0zS0rG0g9wBYbjtlxMyIIdcBRQ+BrrbbSx4mpE7z/CyAaNIADxnxA2uDYX/ppN\n0PbyDCYBfZy83xXIqOu4uXWrCvO+WbOVXUQaAWDSKmP3Q06Aub2RGztX9bWr4kjG\nLNwKwOoBAgMBAAECggEAY3UIlHNS56/LxA/4FAUBnCXyIgK52bLXur/Pdrs2nlV4\ngy9iyb/6WtnHHWoFGdSvR0PR8WA/Cc2XGV1ac9fKZKNz73t1OiS7oDxWfjmqlawz\njrbwHWk7PEozU9hVe7HgyqUGz8Lvlz3VHvWM6QGpKhR5fRKtRjeA82m0+2UmNRns\nPKe828j0K+jYhfB2U4Y3D1UJQrNJViWdAqjdBi3G1TjqRS9Alua6xiRiLCrU5jkf\n8WuphOo7Gtw7SRip9PCfS90PszKNja1a0MnzDHxl652ffiIgu6D0UvHZ+Bu+U+yg\nWWYaRs0WkTT8R4iFdZM877+Lf+8cDfsGWGRtN62MnQKBgQDvvTPrgUpCIDW2d/0I\nd2JbufVnhORVgcvL8s66L8M3C9K/ejP4lRFBZpc2KRWPv71OjBuqzCfOR9+55hl+\nFdrAjPPvS/8B+5P8JXK87Ep9wGc4fWDF2Lcb6IRZlzAYPpNNfCFoIr3CCgIQ9LVh\n/0xb2hYja2ofoA76VW5EaCNhBwKBgQDZIlK2oBDQtOyzJRmk+6NyF06+wkAJMOAm\n3Yt963JQe2eVzrCM6Iu+RoF583eSRXSqYN953kmoyCQSBskqt9ve6rkj1nnqEYQV\nBCkB5kNVybJCQqi0V7iArZn+M4PJntmWcHTP3AUh+FOIusBbczrnhF36i/JIHYvb\nzVbUbQeCtwKBgHGKC9LXUpHqq0WVohKmZ8DFW0IBoBoW9KvMfLeU80FYqiDhAUgT\nYS62JZsS7hE8X62ZkWjcc2WwiHaEUUJzmzxiBQ0p0sXfngBmw+ZRih3wR3Jrfq90\nqZPgFP5RKgfxatXhmfi1q2UAVGYvXs/glwtRR/bSYlpD9ZP9bdGb+FV1AoGBAMI7\nyuPlAcXA4rBKMst78rS/lshbua6/EvSRYBPPB15pVbsTvqj96OvX5EC0AzVMflVe\n/OnmZ9vc1S9u9IsLF1sse1tMo5g3/QBTzV8OnRNjrttJB+LzSW+KW+OiL3SvbZL+\nm+/IsKq3mfoInMPxqzKpHOxgPeY20AJaiB7UPVC3AoGBAMeaSx9E1PDTahL3M9O+\nwBqzVwywqUdOlvWyX3G8Ik9cZxJX0OQmSg3rsUmoFedkLoktbV+BtxREI3qW/04m\nz8r7p+iTwABFHIoY9yyWfzmilLatOrO1GEzXmHt15C/H21diitCgmF7hfqA//KHM\nCZJDOH6TIP9wNKt4w1UbNWeF\n-----END PRIVATE KEY-----\n",
+  "client_email": "mywebproje@proje-kurs.iam.gserviceaccount.com",
+  "client_id": "117688488220666991379",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mywebproje%40proje-kurs.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
