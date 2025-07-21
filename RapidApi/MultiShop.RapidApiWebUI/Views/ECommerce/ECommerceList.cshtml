@@ -1,0 +1,35 @@
+﻿@model ECommerceViewModel
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br />
+    <br />
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ürün Başlığı</th>
+            <th>Ürün Puanı</th>
+            <th>Ürün Fiyatı</th>
+            <th>Ürün Detayları</th>
+        </tr>
+        @foreach(var item in Model.data.products)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.product_title</td>
+                <td>@item.product_rating</td>
+                <td>@item.offer.price</td>
+                <td><a href="@item.product_page_url" class="btn btn-info">Detaylar</a></td>
+            </tr>
+        }
+    </table>
+
+</div>
+
