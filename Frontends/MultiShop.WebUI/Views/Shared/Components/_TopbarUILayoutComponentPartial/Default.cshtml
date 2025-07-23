@@ -1,6 +1,33 @@
-﻿
+﻿@using System.Globalization
+@model IList<CultureInfo>
+@{
+    var currentCulture = CultureInfo.CurrentCulture.Name;
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function changeLanguage(cultureCode) {
+        var path = window.location.pathname;
+        var segments = path.split('/').filter(function (s) { return s !== ""; });
+
+        var isCultureSet = segments.length > 0 && /^[a-z]{2}(-[A-Z]{2})?$/i.test(segments[0]);
+
+        if (isCultureSet) {
+            segments[0] = cultureCode;
+        } else {
+            segments.unshift(cultureCode);
+        }
+
+        var newUrl = '/' + segments.join('/') + window.location.search;
+
+        window.location.href = newUrl;
+    }
+</script>
+
+
 <div class="container-fluid">
-    @* <div class="row bg-secondary py-1 px-xl-5">
+    @*  <div class="row bg-secondary py-1 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
                 <a class="text-body mr-3" href="">About</a>
@@ -57,7 +84,7 @@
         <div class="col-lg-4 col-6 text-left">
             <form action="">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Aranacak Ürünü Giriniz">
+                    <input type="text" class="form-control" placeholder="@ViewBag.InPageEntertheProducttoSearch">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search"></i>
@@ -66,9 +93,27 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-4 col-6 text-right">
-            <p class="m-0">Müşteri Hizmetleri</p>
+
+        <div class="col-lg-3 col-6 text-right">
+
+            <p class="m-0">@ViewBag.inPageCustomerService</p>
             <h5 class="m-0">+90 123 456 7890</h5>
         </div>
+
+        <div class="col-lg-1 d-inline-flex align-items-left">
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@currentCulture.ToUpper()</button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    @foreach (var culture in Model)
+                    {
+                        <button class="dropdown-item" type="button" onclick="changeLanguage('@culture.Name')">
+                            @culture.TwoLetterISOLanguageName.ToUpper()
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

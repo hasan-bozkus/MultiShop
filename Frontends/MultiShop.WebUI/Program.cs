@@ -1,6 +1,10 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
+using Microsoft.AspNetCore.Mvc.Razor;
 using MultiShop.WebUI.Handlers;
+using MultiShop.WebUI.Middlewares;
 using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
@@ -28,11 +32,12 @@ using MultiShop.WebUI.Services.StatisticServices.MessageStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 using MultiShop.WebUI.Services.UserIdentityServices;
 using MultiShop.WebUI.Settings;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme,
-    opt=>
+    opt =>
     {
         opt.LoginPath = "/Login/Index";
         opt.LogoutPath = "/Login/Logout";
@@ -76,92 +81,92 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 
 
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<ISliderFeatureService, SliderFeatureService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IFeatureService, FeatureService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IOfferDiscountServices, OfferDiscountService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IBrandService, BrandService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IAboutService, AboutService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IOrderOrderingService, OrderOrderingService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IMessageService, MessageService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient<IUserIdentityService, UserIdentityService>(opt =>
-{ 
+{
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
@@ -196,7 +201,34 @@ builder.Services.AddHttpClient<IMessageStatisticService, MessageStatisticService
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews().AddViewLocalization();
+
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    opt.DefaultRequestCulture = new("tr");
+    CultureInfo[] cultures = new[]
+    {
+        new CultureInfo("tr"),
+        new CultureInfo("en"),
+        new CultureInfo("ar"),
+        new CultureInfo("de"),
+        new CultureInfo("fr"),
+        new CultureInfo("it")
+    };
+
+    opt.SupportedCultures = cultures;
+    opt.SupportedUICultures = cultures;
+});
+
+builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
+
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 var app = builder.Build();
 
@@ -207,8 +239,14 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+//var supportedCultures = new[] { "en", "fr", "de", "tr", "it" };
+//var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[3]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization();
+app.UseRequestLocalizationCookies();
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -216,14 +254,36 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-  name: "areas",
-  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Default}/{action=Index}/{id?}");
+IList<CultureInfo> supportedCultures = new List<CultureInfo>
+{
+    new CultureInfo("tr"),
+    new CultureInfo("en"),
+    new CultureInfo("ar"),
+    new CultureInfo("de"),
+    new CultureInfo("fr"),
+    new CultureInfo("it")
+};
+var localizationOptions = new RequestLocalizationOptions
+{
+    //Varsayýlan olarak gelecek olan dil.
+    DefaultRequestCulture = new RequestCulture("tr"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures,
 
+};
+var requestProvider = new RouteDataRequestCultureProvider();
+localizationOptions.RequestCultureProviders.Insert(0, requestProvider);
 
+app.UseRequestLocalization(localizationOptions);
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{culture=tr}/{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{culture=tr}/{controller=Default}/{action=Index}/{id?}");
+});
 app.Run();

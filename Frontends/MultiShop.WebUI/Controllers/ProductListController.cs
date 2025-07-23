@@ -9,7 +9,6 @@ namespace MultiShop.WebUI.Controllers
 {
     public class ProductListController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly ICommentService _commentService;
 
         public ProductListController(ICommentService commentService)
