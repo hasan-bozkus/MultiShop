@@ -1,0 +1,9 @@
+Ýnasn Kaynaklarý Yönetimi / Mikroservis ()
+
+ElasticSeacrh
+Saga (Orc.)
+Aws Cloud
+Azure Cloud
+MySQL
+UnitOfWork-Iterator-Observer-Chain Of Resp.
+Microservices Design Pattern

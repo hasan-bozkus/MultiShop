@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		GoogleCloudStorageCodes.txt = GoogleCloudStorageCodes.txt
 		IdentityServerVersionErrorSolition.txt = IdentityServerVersionErrorSolition.txt
 		LoginIndex.txt = LoginIndex.txt
+		NextMicroserviceProjectMainSubject.txt = NextMicroserviceProjectMainSubject.txt
 		OcelotCodeExample.txt = OcelotCodeExample.txt
 		OcelotLİnk.txt = OcelotLİnk.txt
 		PortainerCmd.txt = PortainerCmd.txt
