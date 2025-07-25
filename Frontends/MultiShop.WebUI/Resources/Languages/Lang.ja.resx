@@ -118,63 +118,63 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="inPage.DealoftheDay" xml:space="preserve">
-    <value>Günün Fırsatı</value>
+    <value>今日の取引</value>
   </data>
   <data name="inPage.HomePage" xml:space="preserve">
-    <value>Ana Sayfa</value>
+    <value>ホームページ</value>
   </data>
   <data name="inPage.MyCart" xml:space="preserve">
-    <value>Sepetim</value>
+    <value>私のカート</value>
   </data>
   <data name="inPage.Payment" xml:space="preserve">
-    <value>Ödeme</value>
+    <value>支払い</value>
   </data>
   <data name="inPage.ProductDetails" xml:space="preserve">
-    <value>Ürün Detayları</value>
+    <value>製品詳細</value>
   </data>
   <data name="inPage.Products" xml:space="preserve">
-    <value>Ürünler</value>
+    <value>製品</value>
   </data>
   <data name="inPage.SignIn" xml:space="preserve">
-    <value>Giriş Yap</value>
+    <value>ログイン</value>
   </data>
   <data name="inPage.Pages" xml:space="preserve">
-    <value>Sayfalar</value>
+    <value>ページ</value>
   </data>
   <data name="inPage.Categories" xml:space="preserve">
-    <value>Kategoriler</value>
+    <value>カテゴリ</value>
   </data>
   <data name="inPage.Contact" xml:space="preserve">
-    <value>İletişim</value>
+    <value>コミュニケーション</value>
   </data>
   <data name="inPage.CustomerService" xml:space="preserve">
-    <value>Müşteri Hizmetleri</value>
+    <value>顧客サービス</value>
   </data>
   <data name="inPage.EntertheProducttoSearch" xml:space="preserve">
-    <value>Aranacak Ürünü Giriniz</value>
+    <value>検索する製品を入力してください</value>
   </data>
   <data name="inPage.ProductList" xml:space="preserve">
-    <value>Ürün Listesi</value>
+    <value>製品一覧</value>
   </data>
   <data name="inPage.Orders" xml:space="preserve">
-    <value>Siparişler</value>
+    <value>注文</value>
   </data>
   <data name="inPage.OrderTransactions" xml:space="preserve">
-    <value>Sipariş İşlemleri</value>
+    <value>注文取引</value>
   </data>
   <data name="inPage.PaymentScreen" xml:space="preserve">
-    <value>Ödeme Ekranı</value>
+    <value>決済画面</value>
   </data>
   <data name="inPage.PaymentbyCard" xml:space="preserve">
-    <value>Kartla Ödeme</value>
+    <value>カードでのお支払い</value>
   </data>
   <data name="inPage.SignUp" xml:space="preserve">
-    <value>Kayıt Ol</value>
+    <value>サインアップ</value>
   </data>
   <data name="inPage.AboutUs" xml:space="preserve">
-    <value>Hakkımızda</value>
+    <value>私たちについて</value>
   </data>
   <data name="inPage.SendMessage" xml:space="preserve">
-    <value>Mesaj Gönder</value>
+    <value>メッセージを送信する</value>
   </data>
 </root>

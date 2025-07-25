@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using MultiShop.DtoLayer.CommentDtos;
+using MultiShop.WebUI.Languages;
 using MultiShop.WebUI.Services.CommentServices;
 using Newtonsoft.Json;
 using System.Text;
@@ -10,27 +13,37 @@ namespace MultiShop.WebUI.Controllers
     public class ProductListController : Controller
     {
         private readonly ICommentService _commentService;
+        readonly IStringLocalizer<Lang> _stringLocalizer;
+        private readonly RequestLocalizationOptions _requestLocalizationOptions;
 
-        public ProductListController(ICommentService commentService)
+        public ProductListController(ICommentService commentService, IStringLocalizer<Lang> stringLocalizer, IOptions<RequestLocalizationOptions> requestLocalizationOptions)
         {
             _commentService = commentService;
+            _stringLocalizer = stringLocalizer;
+            _requestLocalizationOptions = requestLocalizationOptions.Value;
         }
 
         public IActionResult Index(string id)
         {
-            ViewBag.directory1 = "Ana Sayfa";
-            ViewBag.directory2 = "Ürünler";
-            ViewBag.directory3 = "Ürün Listesi";
+            var products = _stringLocalizer["inPage.Products"];
+            var productList = _stringLocalizer["inPage.ProductList"];
 
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = products;
+            ViewBag.directory3 = productList;
+            
             ViewBag.i = id;
             return View();
         }
 
         public IActionResult ProductDetail(string id)
         {
+            var products = _stringLocalizer["inPage.Products"];
+            var productDetails = _stringLocalizer["inPage.ProductDetails"];
+
             ViewBag.directory1 = "Ana Sayfa";
-            ViewBag.directory2 = "Ürünler";
-            ViewBag.directory3 = "Ürün Detayları";
+            ViewBag.directory2 = products;
+            ViewBag.directory3 = productDetails;
             ViewBag.x = id;
             return View();
         }

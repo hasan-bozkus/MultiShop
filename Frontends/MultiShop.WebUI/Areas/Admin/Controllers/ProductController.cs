@@ -71,7 +71,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateProduct(string id)
         {
-
             ProductViewBagList();
 
             var categoryValue = await _categoryService.GetAllCategoryAsync();
@@ -92,7 +91,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateProduct(ResultProductDto updateProductDto)
         {
             await _productService.UpdateProductAsync(updateProductDto);
-            return View();
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> ProductListWithCategory()

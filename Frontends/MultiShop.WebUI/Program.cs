@@ -219,7 +219,8 @@ builder.Services.Configure<RequestLocalizationOptions>(opt =>
         new CultureInfo("ar"),
         new CultureInfo("de"),
         new CultureInfo("fr"),
-        new CultureInfo("it")
+        new CultureInfo("it"),
+        new CultureInfo("ja")
     };
 
     opt.SupportedCultures = cultures;
@@ -262,7 +263,8 @@ IList<CultureInfo> supportedCultures = new List<CultureInfo>
     new CultureInfo("ar"),
     new CultureInfo("de"),
     new CultureInfo("fr"),
-    new CultureInfo("it")
+    new CultureInfo("it"),
+    new CultureInfo("ja")
 };
 var localizationOptions = new RequestLocalizationOptions
 {

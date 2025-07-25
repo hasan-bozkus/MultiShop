@@ -11,7 +11,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductImageController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly IProductImageService _productImageService;
 
         public ProductImageController(IProductImageService productImageService)
@@ -22,7 +21,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> ProductImageListDetail(string id)
         {
             var values = await _productImageService.GetByProductIDProdutsImageListAsync(id);
-            ViewBag.productId = values.Select(x => x.ProductID).FirstOrDefault();
+            ViewBag.productId = id;
 
             return View(values);
         }

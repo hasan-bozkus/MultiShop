@@ -1,4 +1,5 @@
-﻿<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+﻿@using System.Globalization
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <aside class="main-sidebar dark-bg">
     <section class="sidebar">
@@ -6,32 +7,32 @@
             <div class="pull-left image"> <img src="~/images/logos/manlogo.jpg" class="img-circle" alt="User Image"> </div>
             <div class="pull-left info">
                 <p>MultiShop Admin</p>
-                <a href="#"><i class="fa fa-circle"></i> Çevrimiçi</a>
+                <a asp-action="Index" asp-controller="Default" asp-area="" asp-route-culture="@CultureInfo.CurrentCulture.Name"><i class="fa fa-circle"></i> Çevrimiçi</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header dark-bg">Menü</li>
-            <li> <a href="/Admin/Category/Index"> <i class="fa fa-th"></i> <span>Kategoriler</span></a> </li>
-            <li> <a href="/Admin/Product/ProductListWithCategory"> <i class="fa fa-car"></i> <span>Ürünler</span></a> </li>
-            <li> <a href="/Default/Index"> <i class="fa fa-motorcycle"></i> <span>Siteye Git</span></a> </li>
-            <li> <a href="Admin/SpecialOffer/Index"> <i class="fa fa-cubes"></i> <span>Özel Teklifler</span></a> </li>
-            <li> <a href="/Admin/FeatureSlider/Index"> <i class="fa fa-picture-o"></i> <span>Slider Paneli</span></a> </li>
-            <li> <a href="/Admin/Feature/Index"> <i class="fa fa-anchor"></i> <span>Öne Çıkan Alan Paneli</span></a> </li>
-            <li> <a href="/Admin/OfferDiscount/Index"> <i class="fa fa-coffee"></i> <span>İndirim Teklifleri Paneli</span></a> </li>
-            <li> <a href="/Admin/Brand/Index"> <i class="fa fa-university"></i> <span>Markalar Paneli</span></a> </li>
-            <li> <a href="/Admin/About/Index"> <i class="fa fa-info"></i> <span>Hakkımızda Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-comment"></i> <span>Yorumlar Paneli</span></a> </li>
-            <li> <a href="/Admin/User/UserList"> <i class="fa fa-users"></i> <span>Kullanıcı Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-shopping-basket"></i> <span>Sipariş Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-money"></i> <span>Kasa Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-pie-chart"></i> <span>İstatistik Paneli</span></a> </li>
-            <li> <a href="/Admin/Cargo/CargoCompanyList"> <i class="fa fa-bus"></i> <span>Kargo Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-balance-scale"></i> <span>İndirim Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-picture-o"></i> <span>Görsel Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-paper-plane"></i> <span>Mesaj Paneli</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-cog"></i> <span>Ayarlar</span></a> </li>
-            <li> <a href="/Admin/Comment/Index"> <i class="fa fa-window-close"></i> <span>Çıkış Yap</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Category" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-th"></i> <span>Kategoriler</span></a> </li>
+            <li> <a asp-action="ProductListWithCategory" asp-controller="Product" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-car"></i> <span>Ürünler</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Default" asp-area="" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-motorcycle"></i> <span>Siteye Git</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="SpecialOffer" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-cubes"></i> <span>Özel Teklifler</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="FeatureSlider" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-picture-o"></i> <span>Slider Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Feature" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-anchor"></i> <span>Öne Çıkan Alan Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="OfferDiscount" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-coffee"></i> <span>İndirim Teklifleri Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Brand" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-university"></i> <span>Markalar Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="About" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-info"></i> <span>Hakkımızda Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Comment" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-comment"></i> <span>Yorumlar Paneli</span></a> </li>
+            <li> <a asp-action="UserList" asp-controller="User" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-users"></i> <span>Kullanıcı Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Comment" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-shopping-basket"></i> <span>Sipariş Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-money"></i> <span>Kasa Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-pie-chart"></i> <span>İstatistik Paneli</span></a> </li>
+            <li> <a asp-action="CargoCompanyList" asp-controller="Cargo" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-bus"></i> <span>Kargo Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-balance-scale"></i> <span>İndirim Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-picture-o"></i> <span>Görsel Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-paper-plane"></i> <span>Mesaj Paneli</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-cog"></i> <span>Ayarlar</span></a> </li>
+            <li> <a href="#"> <i class="fa fa-window-close"></i> <span>Çıkış Yap</span></a> </li>
         </ul>
         <!-- sidebar-menu -->
     </section>

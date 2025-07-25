@@ -138,9 +138,6 @@
   <data name="inPage.SignIn" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="inPage.SignUp" xml:space="preserve">
-    <value>Melden Sie sich an</value>
-  </data>
   <data name="inPage.Pages" xml:space="preserve">
     <value>Seiten</value>
   </data>
@@ -155,5 +152,29 @@
   </data>
   <data name="inPage.EntertheProducttoSearch" xml:space="preserve">
     <value>Geben Sie das zu suchende Produkt ein</value>
+  </data>
+  <data name="inPage.ProductList" xml:space="preserve">
+    <value>Produktliste</value>
+  </data>
+  <data name="inPage.Orders" xml:space="preserve">
+    <value>Bestellungen</value>
+  </data>
+  <data name="inPage.OrderTransactions" xml:space="preserve">
+    <value>Bestelltransaktionen</value>
+  </data>
+  <data name="inPage.PaymentScreen" xml:space="preserve">
+    <value>Zahlungsbildschirm</value>
+  </data>
+  <data name="inPage.PaymentbyCard" xml:space="preserve">
+    <value>Zahlung per Karte</value>
+  </data>
+  <data name="inPage.SignUp" xml:space="preserve">
+    <value>Melden Sie sich an</value>
+  </data>
+  <data name="inPage.AboutUs" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="inPage.SendMessage" xml:space="preserve">
+    <value>Nachricht senden</value>
   </data>
 </root>

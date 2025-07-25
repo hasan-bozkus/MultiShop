@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos;
+using MultiShop.WebUI.Languages;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Services.OrderServices;
 using System.Threading.Tasks;
@@ -10,9 +13,13 @@ namespace MultiShop.WebUI.Controllers
     {
         private readonly IOrderAddressService _orderAddressService;
         private readonly IUserService _userService;
+        readonly IStringLocalizer<Lang> _stringLocalizer;
+        private readonly RequestLocalizationOptions _requestLocalizationOptions;
 
-        public OrderController(IOrderAddressService orderAddressService, IUserService userService)
+        public OrderController(IOrderAddressService orderAddressService, IUserService userService, IStringLocalizer<Lang> stringLocalizer, IOptions<RequestLocalizationOptions> requestLocalizationOptions)
         {
+            _stringLocalizer = stringLocalizer;
+            _requestLocalizationOptions = requestLocalizationOptions.Value;
             _orderAddressService = orderAddressService;
             _userService = userService;
         }
@@ -20,9 +27,12 @@ namespace MultiShop.WebUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var orders = _stringLocalizer["inPage.Orders"];
+            var orderTransactions = _stringLocalizer["inPage.OrderTransactions"];
+
             ViewBag.directory1 = "MultiShop";
-            ViewBag.directory2 = "Siparişler";
-            ViewBag.directory3 = "Sipariş İşlemleri";
+            ViewBag.directory2 = orders;
+            ViewBag.directory3 = orderTransactions;
 
             return View();
         }
