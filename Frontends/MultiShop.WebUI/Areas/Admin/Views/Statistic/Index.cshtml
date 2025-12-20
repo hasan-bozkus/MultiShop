@@ -51,7 +51,7 @@
                 <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
                 <div class="media-info">
                     <h5>En Pahallı Ürün</h5>
-                    <h3>@ViewBag.maxPriceProductName</h3>
+                    <h3>@ViewBag.maxPriceProductName.Substring(0, 15)</h3>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
                 <div class="media-info">
                     <h5>En Ucuz Ürün</h5>
-                    <h3>@ViewBag.minPriceProductName</h3>
+                    <h3>@ViewBag.minPriceProductName.Substring(0, 15)</h3>
                 </div>
             </div>
         </div>

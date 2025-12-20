@@ -1,7 +1,5 @@
-﻿
-Makaleler Link
-7 destek oyu
-ŞULE NUR · Ders 437 · 8 ay önce
+﻿Makaleler Link
+
 Docker portainer için kullandığımız kod:
 
 docker volume create portainer_data

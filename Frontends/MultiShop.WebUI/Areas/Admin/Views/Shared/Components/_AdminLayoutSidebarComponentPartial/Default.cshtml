@@ -26,7 +26,7 @@
             <li> <a asp-action="UserList" asp-controller="User" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-users"></i> <span>Kullanıcı Paneli</span></a> </li>
             <li> <a asp-action="Index" asp-controller="Comment" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-shopping-basket"></i> <span>Sipariş Paneli</span></a> </li>
             <li> <a href="#"> <i class="fa fa-money"></i> <span>Kasa Paneli</span></a> </li>
-            <li> <a href="#"> <i class="fa fa-pie-chart"></i> <span>İstatistik Paneli</span></a> </li>
+            <li> <a asp-action="Index" asp-controller="Statistic" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-pie-chart"></i> <span>İstatistik Paneli</span></a> </li>
             <li> <a asp-action="CargoCompanyList" asp-controller="Cargo" asp-area="Admin" asp-route-culture="@CultureInfo.CurrentCulture.Name"> <i class="fa fa-bus"></i> <span>Kargo Paneli</span></a> </li>
             <li> <a href="#"> <i class="fa fa-balance-scale"></i> <span>İndirim Paneli</span></a> </li>
             <li> <a href="#"> <i class="fa fa-picture-o"></i> <span>Görsel Paneli</span></a> </li>

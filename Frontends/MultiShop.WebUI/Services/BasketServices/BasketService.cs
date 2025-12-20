@@ -36,7 +36,8 @@ namespace MultiShop.WebUI.Services.BasketServices
                 }
                 else
                 {
-                    values = new BasketTotalDto();
+                    //values = new BasketTotalDto();
+                    values.BasketItems.Where(x => x.ProductId == basketItemDto.ProductId).Select(x=> x.Quantity++);
                     values.BasketItems.Add(basketItemDto);
                 }
             }

@@ -1,4 +1,6 @@
-﻿@model BasketTotalDto
+﻿@using System.Globalization
+
+@model BasketTotalDto
 
 <div class="col-lg-4">
     <form class="mb-30" method="post" asp-action="ConfirmDiscountCoupon" asp-controller="Discount">
@@ -38,7 +40,7 @@
                 <h5>İndirimli Güncel Tutar</h5>
                 <h5>@ViewBag.totalNewPriceWithDiscount.ToString("N2") ₺</h5>
             </div>           
-            <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Ödeme Adımına Geç</button>
+            <a asp-controller="Payment" asp-action="Index" asp-route-culture="@CultureInfo.CurrentCulture.Name" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Ödeme Adımına Geç</a>
         </div>
       
     </div>
