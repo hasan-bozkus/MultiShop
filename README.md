@@ -1,4 +1,8 @@
 # MultiShop Mikroservis E-Ticaret Projesi (.Net Core 6.0)
+
+## Sertifika
+![certificate](https://udemy-certificate.s3.amazonaws.com/image/UC-8eb1d933-8b90-4da1-ac02-410ccb356344.jpg?v=1753275005000)
+
 ## Projenin Temel Maksadı
 MultiShop Mikroservis Projesi, Kullanıcıların rahat ve güvenilir bir şekilde alışveriş yapmasına olanak sağlayan bir e-ticaret platformudur. Kullanıcılar kayıt olabilir, beğendikleri ürünlere yorum yapabilir, beğendikleri ürünleri sipariş edebilir ve kampanyalardan kupon kodları ile faydalanabilir.
 
